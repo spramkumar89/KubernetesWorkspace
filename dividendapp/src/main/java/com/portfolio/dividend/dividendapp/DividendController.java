@@ -18,4 +18,14 @@ public class DividendController {
 	public List<Dividend> loadBankTransactions() {
 		return service.loadBankTransactions();
 	}
+	
+	@GetMapping("/startup")
+	public String checkStartup() {
+		return "Startup Succeeds";
+	}
+	
+	@GetMapping("/liveness")
+	public String checkLiveness() {
+		return "Liveness Succeeds";
+	}
 }

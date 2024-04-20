@@ -18,4 +18,14 @@ public class TradeController {
 	public List<StockTrades> loadStockTrades() {
 		return service.loadStockTrades();
 	}
+	
+	@GetMapping("/startup")
+	public String checkStartup() {
+		return "Startup Succeeds";
+	}
+	
+	@GetMapping("/liveness")
+	public String checkLiveness() {
+		return "Liveness Succeeds";
+	}
 }

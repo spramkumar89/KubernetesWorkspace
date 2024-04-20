@@ -18,4 +18,14 @@ public class BankTransactionsController {
 	public List<BankTransactions> loadBankTransactions() {
 		return service.loadBankTransactions();
 	}
+	
+	@GetMapping("/startup")
+	public String checkStartup() {
+		return "Startup Succeeds";
+	}
+	
+	@GetMapping("/liveness")
+	public String checkLiveness() {
+		return "Liveness Succeeds";
+	}
 }

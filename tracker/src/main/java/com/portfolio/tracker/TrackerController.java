@@ -13,4 +13,13 @@ public class TrackerController {
 		return "Tracker Loading";
 	}
 
+	@GetMapping("/startup")
+	public String checkStartup() {
+		return "Startup Succeeds";
+	}
+	
+	@GetMapping("/liveness")
+	public String checkLiveness() {
+		return "Liveness Succeeds";
+	}
 }

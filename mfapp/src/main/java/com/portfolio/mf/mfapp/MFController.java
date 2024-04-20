@@ -18,4 +18,14 @@ public class MFController {
 	public List<MutualFund> loadBankTransactions() {
 		return service.loadMFTransactions();
 	}
+	
+	@GetMapping("/startup")
+	public String checkStartup() {
+		return "Startup Succeeds";
+	}
+	
+	@GetMapping("/liveness")
+	public String checkLiveness() {
+		return "Liveness Succeeds";
+	}
 }
