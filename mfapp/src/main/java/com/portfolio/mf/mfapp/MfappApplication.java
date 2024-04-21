@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySources;
 @SpringBootApplication
 @PropertySources({
 	@PropertySource("file:/app/config/common.properties"),
-	@PropertySource("file:/app/config/mfapp.properties")
+	@PropertySource("file:/app/config/app/mfapp.properties")
 })
 public class MfappApplication {
 

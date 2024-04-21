@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySources;
 @SpringBootApplication
 @PropertySources({
 	@PropertySource("file:/app/config/common.properties"),
-	@PropertySource("file:/app/config/dividendapp.properties")
+	@PropertySource("file:/app/config/app/dividendapp.properties")
 })
 public class DividendappApplication {
 

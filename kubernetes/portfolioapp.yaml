@@ -1,0 +1,207 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankapp
+  namespace: k8stestspace
+  labels:
+    app: bankapp
+spec:
+  selector:
+    matchLabels:
+      app: bankapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: bankapp
+    spec:
+      containers:
+        - name: bankapp
+          image: 'spramkumar1989/bankapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: bank-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: bank-config
+          configMap:
+            name: bank-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dividendapp
+  namespace: k8stestspace
+  labels:
+    app: dividendapp
+spec:
+  selector:
+    matchLabels:
+      app: dividendapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: dividendapp
+    spec:
+      containers:
+        - name: dividendapp
+          image: 'spramkumar1989/dividendapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: dividend-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: dividend-config
+          configMap:
+            name: dividend-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfapp
+  namespace: k8stestspace
+  labels:
+    app: mfapp
+spec:
+  selector:
+    matchLabels:
+      app: mfapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mfapp
+    spec:
+      containers:
+        - name: mfapp
+          image: 'spramkumar1989/mfapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: mf-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: mf-config
+          configMap:
+            name: mf-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackerapp
+  namespace: k8stestspace
+  labels:
+    app: trackerapp
+spec:
+  selector:
+    matchLabels:
+      app: trackerapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: trackerapp
+    spec:
+      containers:
+        - name: trackerapp
+          image: 'spramkumar1989/trackerapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: tracker-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: tracker-config
+          configMap:
+            name: tracker-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tradeapp
+  namespace: k8stestspace
+  labels:
+    app: tradeapp
+spec:
+  selector:
+    matchLabels:
+      app: tradeapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: tradeapp
+    spec:
+      containers:
+        - name: tradeapp
+          image: 'spramkumar1989/tradeapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: trade-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: trade-config
+          configMap:
+            name: trade-config
