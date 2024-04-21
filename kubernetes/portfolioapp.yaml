@@ -151,7 +151,7 @@ spec:
     spec:
       containers:
         - name: trackerapp
-          image: 'spramkumar1989/trackerapp-v1:latest'
+          image: 'spramkumar1989/tracker-v1:latest'
           resources:
             requests:
               cpu: '2'
