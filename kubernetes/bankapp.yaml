@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bankapp
+  namespace: k8stestspace
   labels:
     app: bankapp
 spec:
@@ -24,3 +25,15 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: bank-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: bank-config
+          configMap:
+            name: bank-config
