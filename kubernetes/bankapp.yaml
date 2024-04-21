@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankapp
+  labels:
+    app: bankapp
+spec:
+  selector:
+    matchLabels:
+      app: bankapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: bankapp
+    spec:
+      containers:
+        - name: bankapp
+          image: 'spramkumar1989/bankapp-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
