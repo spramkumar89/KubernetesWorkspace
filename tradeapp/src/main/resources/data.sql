@@ -4,7 +4,7 @@ CREATE TABLE tbl_trades (
   `trade_ref_id` varchar(255) NOT NULL,
   `date` datetime(6) DEFAULT NULL,
   `price` float DEFAULT NULL,
-  `quantity` bigint(20) DEFAULT NULL,
+  `quantity` BIGINT DEFAULT NULL,
   `stock_symbol` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`trade_ref_id`)
@@ -18,7 +18,7 @@ CREATE TABLE tbl_trades_history (
   `trade_ref_id` varchar(255) NOT NULL,
   `date` date DEFAULT NULL,
   `price` float DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
+  `quantity` INT DEFAULT NULL,
   `stock_symbol` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`trade_ref_id`)

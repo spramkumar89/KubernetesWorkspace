@@ -8,7 +8,7 @@ CREATE TABLE tbl_mutualfund (
   `type` varchar(255) DEFAULT NULL,
   `units` float DEFAULT NULL,
   PRIMARY KEY (`mf_ref_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+);
 
 -- Dumping data for table stock_viewer_db.tbl_mutualfund: ~0 rows (approximately)
 
@@ -22,7 +22,7 @@ CREATE TABLE tbl_mutualfund_transactions (
   `type` varchar(255) DEFAULT NULL,
   `units` float DEFAULT NULL,
   PRIMARY KEY (`mf_ref_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+);
 
 -- Dumping data for table stock_viewer_db.tbl_mutualfund_transactions: ~173 rows (approximately)
 INSERT INTO `tbl_mutualfund_transactions` (`mf_ref_id`, `date`, `fund_name`, `nav`, `type`, `units`) VALUES

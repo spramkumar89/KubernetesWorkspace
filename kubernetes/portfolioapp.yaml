@@ -25,6 +25,8 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          ports:
+            - containerPort: 8080
           volumeMounts: 
             -  name: common-config
                mountPath: "/app/config"
@@ -67,6 +69,8 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          ports:
+            - containerPort: 8080
           volumeMounts: 
             -  name: common-config
                mountPath: "/app/config"
@@ -109,6 +113,8 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          ports:
+            - containerPort: 8080
           volumeMounts: 
             -  name: common-config
                mountPath: "/app/config"
@@ -151,6 +157,8 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          ports:
+            - containerPort: 8080
           volumeMounts: 
             -  name: common-config
                mountPath: "/app/config"
@@ -193,6 +201,8 @@ spec:
               cpu: '2'
             limits:
               cpu: '2'
+          ports:
+            - containerPort: 8080
           volumeMounts: 
             -  name: common-config
                mountPath: "/app/config"
@@ -205,3 +215,70 @@ spec:
         - name: trade-config
           configMap:
             name: trade-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bankapp-service
+spec:
+  selector:
+    app: bankapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dividendapp-service
+spec:
+  selector:
+    app: dividendapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfapp-service
+spec:
+  selector:
+    app: mfapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: trackerapp-service
+spec:
+  selector:
+    app: trackerapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tradeapp-service
+spec:
+  selector:
+    app: tradeapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+    
