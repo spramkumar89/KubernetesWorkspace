@@ -1,0 +1,186 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolioapp
+  namespace: k8stestspace
+  labels:
+    app: portfolioapp
+spec:
+  selector:
+    matchLabels:
+      app: portfolioapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: portfolioapp
+    spec:
+      containers:
+        - name: bankapp
+          image: 'spramkumar1989/bankapp-v1:latest'
+          labels:
+            app: bankapp
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: bank-config
+               mountPath: "/app/config/app"
+        - name: dividendapp
+          image: 'spramkumar1989/dividendapp-v1:latest'
+          labels:
+            app: dividendapp
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: dividend-config
+               mountPath: "/app/config/app"
+        - name: mfapp
+          image: 'spramkumar1989/mfapp-v1:latest'
+          labels:
+            app: mfapp
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: mf-config
+               mountPath: "/app/config/app"
+        - name: trackerapp
+          image: 'spramkumar1989/trackerapp-v1:latest'
+          labels:
+            app: trackerapp
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: tracker-config
+               mountPath: "/app/config/app"
+        - name: tradeapp
+          image: 'spramkumar1989/tradeapp-v1:latest'
+          labels:
+            app: tradeapp
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: trade-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: bank-config
+          configMap:
+            name: bank-config
+        - name: dividend-config
+          configMap:
+            name: dividend-config
+        - name: mf-config
+          configMap:
+            name: mf-config
+        - name: tracker-config
+          configMap:
+            name: tracker-config
+        - name: trade-config
+          configMap:
+            name: trade-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bankapp-service
+spec:
+  selector:
+    app: bankapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dividendapp-service
+spec:
+  selector:
+    app: dividendapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfapp-service
+spec:
+  selector:
+    app: mfapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: trackerapp-service
+spec:
+  selector:
+    app: trackerapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tradeapp-service
+spec:
+  selector:
+    app: tradeapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+    
+    

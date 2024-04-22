@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackerapp
+  namespace: k8stestspace
+  labels:
+    app: trackerapp
+spec:
+  selector:
+    matchLabels:
+      app: trackerapp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: trackerapp
+    spec:
+      containers:
+        - name: trackerapp
+          image: 'spramkumar1989/tracker-v1:latest'
+          resources:
+            requests:
+              cpu: '2'
+            limits:
+              cpu: '2'
+          ports:
+            - containerPort: 8080
+          volumeMounts: 
+            -  name: common-config
+               mountPath: "/app/config"
+            -  name: tracker-config
+               mountPath: "/app/config/app"
+      volumes:
+        - name: common-config
+          configMap:
+            name: common-config
+        - name: tracker-config
+          configMap:
+            name: tracker-config
